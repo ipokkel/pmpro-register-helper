@@ -367,6 +367,9 @@
 					$r .= 'size="' . $this->size . '" ';
 				if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';
+				// Add HTML5 required attribute to enable front end validation before submit
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'readonly="readonly" ';
 				if(!empty($this->html_attributes))
@@ -380,6 +383,8 @@
 					$r .= 'size="' . $this->size . '" ';
 				if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'readonly="readonly" ';
 				if(!empty($this->html_attributes))
@@ -393,6 +398,8 @@
 					$r .= 'size="' . $this->size . '" ';
 				if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'readonly="readonly" ';
 				if(!empty($this->html_attributes))
@@ -412,6 +419,8 @@
 					
 				if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'disabled="disabled" ';
 				if(!empty($this->multiple))
@@ -442,6 +451,8 @@
 				$r = '<select id="' . $this->id . '" name="' . $this->name . '[]" multiple="multiple" ';
 				if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'disabled="disabled" ';
 				if(!empty($this->html_attributes))
@@ -474,6 +485,8 @@
 				}				
 				if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'disabled="disabled" ';
 				if(!empty($this->html_attributes))
@@ -507,6 +520,8 @@
 						$r .= 'checked="checked"';
 					if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';
+					if(!empty($this->required))
+						$r .= 'required="required" ';
 					if(!empty($this->readonly))
 						$r .= 'disabled="disabled" ';
 					if(!empty($this->html_attributes))
@@ -522,6 +537,8 @@
 				$r.=checked( $value, 1,false);
 				if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';		
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'disabled="disabled" ';
 				if(!empty($this->html_attributes))
@@ -572,6 +589,8 @@
 				$r = '<textarea id="' . $this->id . '" name="' . $this->name . '" rows="' . $this->rows . '" cols="' . $this->cols . '" ';
 				if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'readonly="readonly" ';
 				if(!empty($this->html_attributes))
@@ -583,6 +602,8 @@
 				$r = '<input type="hidden" id="' . $this->id . '" name="' . $this->name . '" value="' . esc_attr(wp_unslash($value)) . '" ';
 				if(!empty($this->class))
 					$r .= 'class="' . $this->class . '" ';
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'readonly="readonly" ';
 				if(!empty($this->html_attributes))
@@ -609,6 +630,8 @@
 					$r .= 'class="' . $this->class . '" ';
 				if(!empty($this->html_attributes))
 					$r .= $this->getHTMLAttributes();
+				if(!empty($this->required))
+					$r .= 'required="required" ';
 				if(!empty($this->readonly))
 					$r .= 'disabled="disabled" ';
 				$r .= 'name="' . $this->name . '" />';
@@ -722,7 +745,22 @@
                     $r .= 'readonly="readonly" ';
 
                 $r .= '/>';
-            }
+			}
+			elseif($this->type == "date_text")
+			{
+				$r = '<input type="date" id="' . $this->id . '" name="' . $this->name . '" value="' . esc_attr(wp_unslash($value)) . '" ';
+				if(!empty($this->size))
+					$r .= 'size="' . $this->size . '" ';
+				if(!empty($this->class))
+					$r .= 'class="' . $this->class . '" ';
+				if(!empty($this->required))
+					$r .= 'required="required" ';
+				if(!empty($this->readonly))
+					$r .= 'readonly="readonly" ';
+				if(!empty($this->html_attributes))
+					$r .= $this->getHTMLAttributes();
+				$r .= ' />';
+			}
             elseif($this->type == "readonly")
 			{				
 				$r = $value;
